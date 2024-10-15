@@ -27,6 +27,9 @@
             margin-bottom: 20px;
         }
         .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #4CAF50;
             color: #fff;
             padding: 15px;
@@ -48,6 +51,13 @@
             margin-bottom: 20px;
             font-size: 16px;
         }
+        .chevron {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .rotate {
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 <body>
@@ -56,27 +66,42 @@
         <h1>Frequently Asked Questions</h1>
 
         <div class="faq-section">
-            <div class="faq-question">What is the YLearn App?</div>
+            <div class="faq-question">
+                What is the YLearn App?
+                <span class="chevron">▶</span>
+            </div>
             <div class="faq-answer">YLearn is an educational app that provides resources for students of classes 9 to 12, including quizzes, solutions, and a study timetable feature.</div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-question">How can I create a study timetable?</div>
+            <div class="faq-question">
+                How can I create a study timetable?
+                <span class="chevron">▶</span>
+            </div>
             <div class="faq-answer">Simply go to the Study Timetable section in the app, and use the intuitive interface to plan your day by adding subjects and study hours.</div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-question">Is YLearn App free?</div>
+            <div class="faq-question">
+                Is YLearn App free?
+                <span class="chevron">▶</span>
+            </div>
             <div class="faq-answer">Yes, the YLearn App is free for all students. We sustain through ads and optional premium features that enhance the experience.</div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-question">How can I report a problem?</div>
+            <div class="faq-question">
+                How can I report a problem?
+                <span class="chevron">▶</span>
+            </div>
             <div class="faq-answer">If you encounter any issues, feel free to reach out to us through the Contact Us page. We will get back to you as soon as possible.</div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-question">Can I access the app without internet?</div>
+            <div class="faq-question">
+                Can I access the app without internet?
+                <span class="chevron">▶</span>
+            </div>
             <div class="faq-answer">Some features like quizzes and solutions are available offline, but others require an internet connection for access.</div>
         </div>
     </div>
@@ -87,15 +112,26 @@
 
         faqQuestions.forEach(question => {
             question.addEventListener('click', function () {
-                // Close all open answers first
-                const allAnswers = document.querySelectorAll('.faq-answer');
-                allAnswers.forEach(answer => {
-                    answer.style.display = 'none';
-                });
-
-                // Open the clicked question's answer
                 const answer = this.nextElementSibling;
-                answer.style.display = 'block';
+                const chevron = this.querySelector('.chevron');
+
+                // Check if the current answer is visible
+                if (answer.style.display === 'block') {
+                    // Hide the current answer
+                    answer.style.display = 'none';
+                    // Rotate the chevron back
+                    chevron.classList.remove('rotate');
+                } else {
+                    // Close all other answers
+                    const allAnswers = document.querySelectorAll('.faq-answer');
+                    const allChevrons = document.querySelectorAll('.chevron');
+                    allAnswers.forEach(ans => ans.style.display = 'none');
+                    allChevrons.forEach(chev => chev.classList.remove('rotate'));
+
+                    // Show the clicked answer and rotate its chevron
+                    answer.style.display = 'block';
+                    chevron.classList.add('rotate');
+                }
             });
         });
     </script>
