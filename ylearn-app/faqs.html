@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YLearn App - FAQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .faq-section {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: #45a049;
+        }
+        .faq-answer {
+            padding: 15px;
+            background-color: #f9f9f9;
+            display: none;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-section">
+            <div class="faq-question">What is the YLearn App?</div>
+            <div class="faq-answer">YLearn is an educational app that provides resources for students of classes 9 to 12, including quizzes, solutions, and a study timetable feature.</div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-question">How can I create a study timetable?</div>
+            <div class="faq-answer">Simply go to the Study Timetable section in the app, and use the intuitive interface to plan your day by adding subjects and study hours.</div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-question">Is YLearn App free?</div>
+            <div class="faq-answer">Yes, the YLearn App is free for all students. We sustain through ads and optional premium features that enhance the experience.</div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-question">How can I report a problem?</div>
+            <div class="faq-answer">If you encounter any issues, feel free to reach out to us through the Contact Us page. We will get back to you as soon as possible.</div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-question">Can I access the app without internet?</div>
+            <div class="faq-answer">Some features like quizzes and solutions are available offline, but others require an internet connection for access.</div>
+        </div>
+    </div>
+
+    <script>
+        // Get all question elements
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function () {
+                // Close all open answers first
+                const allAnswers = document.querySelectorAll('.faq-answer');
+                allAnswers.forEach(answer => {
+                    answer.style.display = 'none';
+                });
+
+                // Open the clicked question's answer
+                const answer = this.nextElementSibling;
+                answer.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
